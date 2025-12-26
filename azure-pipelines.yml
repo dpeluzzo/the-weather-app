@@ -18,8 +18,10 @@ stages:
             displayName: 'Use Node 20'
           - script: npm ci --omit=dev
             displayName: 'Install dependencies'
+            workingDirectory: src
           - script: npm run build || echo "No build step, continuing"
             displayName: 'Optional build'
+            workingDirectory: src
 
       - job: Deploy
         displayName: Deploy to Azure App Service
@@ -31,4 +33,4 @@ stages:
               azureSubscription: 'sc-azure-rm-weatherapp'   # nombre de tu Service Connection
               appType: 'webAppLinux'
               appName: 'the-weather-app-demo2'              # ej: the-weather-app-demo
-              package: '$(System.DefaultWorkingDirectory)'  # despliegue como código desde el workspace
+              package: '$(System.DefaultWorkingDirectory)/src'  # despliegue como código desde el workspace
