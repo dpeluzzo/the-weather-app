@@ -30,5 +30,5 @@ stages:
             inputs:
               azureSubscription: 'sc-azure-rm-weatherapp'   # nombre de tu Service Connection
               appType: 'webAppLinux'
-              appName: 'the-weather-app-demo'              # ej: the-weather-app-demo
+              appName: 'the-weather-app-demo2'              # ej: the-weather-app-demo
               package: '$(System.DefaultWorkingDirectory)'  # despliegue como código desde el workspace
