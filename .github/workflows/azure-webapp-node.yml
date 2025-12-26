@@ -23,9 +23,11 @@ jobs:
 
       - name: Instalar dependencias (producción)
         run: npm ci --omit=dev
+        working-directory: src
 
       - name: Paso de build (opcional)
         run: npm run build || echo "No hay build, continuamos"
+        working-directory: src
 
       - name: Iniciar sesión en Azure (OIDC)
         uses: azure/login@v2
@@ -37,5 +39,5 @@ jobs:
       - name: Desplegar a Azure App Service
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "the-weather-app-demo2"
-          package: "."
+          app-name: "the-weather-app-demo"
+          package: "src"
